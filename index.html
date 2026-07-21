@@ -581,7 +581,7 @@ function renderAll(saldo, nb, itau, contas, comp, nuconta){
 // ── Init ──────────────────────────────────────────────────────────────────────
 async function init(){
   try {
-    const resp=await fetch('./financas.xlsx');
+    const resp=await fetch('./financas.xlsx?v=' + Date.now());
     if(!resp.ok) throw new Error(`HTTP ${resp.status} — financas.xlsx não encontrado`);
     const buf=await resp.arrayBuffer();
     const wb=XLSX.read(buf,{type:'array',cellDates:false});
